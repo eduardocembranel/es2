@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Pagina inicial</title>
+</head>
+<body>
+    <form id="form-user">
+        <p>Cadastrar usuario</p>
+        <input style="display: block;" name="name" id="in-name" type="text" placeholder="nome">
+        <input style="display: block;" name="email" id="in-email" type="text", placeholder="email">
+        <input style="display: block;" name="uf" id="in-uf" type="text", placeholder="UF">
+        <input style="display: block;" name="city" id="in-city" type="text", placeholder="cidade">
+        <button type="submit" id="btn-create-user">Cadastrar usuario</button>
+    </form>
+    <br><br>
+    <button id="btn-listar-usuarios">Listar usuarios</button>
+    <button id="btn-listar-menus">Listar menus</button>
+    <button id="btn-listar-restaurantes">Listar restaurantes</button>
+    <pre id="lista"></pre>
+    <script src="js/scriptUsers.js"></script>
+    <script src="js/scriptMenus.js"></script>
+    <script src="js/scriptRestaurants.js"></script>
+</body>
+</html>
