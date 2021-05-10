@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Pagina inicial</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Login</title>
 </head>
 <body>
     <nav>
@@ -19,5 +19,14 @@
         <%- include('nav/nav') %>
         <% } %>
     </nav>
+    <h1 class="title-form">Entrar</h1>
+    <form class="form-cadastro" id="form-login">
+        <label for="in-email">E-mail</label>
+        <input class="input-form" id="in-email" type="text" placeholder="Seu e-mail">
+        <label for="in-pass">Senha</label>
+        <input class="input-form" id="in-pass" type="password" placeholder="Sua senha" name="pass" id="in-pass">
+        <button class="btn-submit" type="submit">Entrar</button>
+    </form>
+    <script src="js/scriptLogin.js"></script>
 </body>
 </html>

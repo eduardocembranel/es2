@@ -3,31 +3,60 @@ const express = require('express');
 const userController = require('./controllers/userController');
 const restaurantController = require('./controllers/restaurantController');
 const menuController = require('./controllers/menuController');
-const profileUserController = require('./controllers/profileUserController');
-const profileRestController = require('./controllers/profileRestController');
-const sessionUserController = require('./controllers/sessionUserController');
-const sessionRestController = require('./controllers/sessionRestController');
+const loginController = require('./controllers/loginController');
 
 const routes = express.Router();
 
 routes.get('/', (req, res) => {
-    return res.render('index');
+    var user = req.cookies.user;
+    if (!user) user = 0;
+    return res.render('index', {user: user});
+});
+
+routes.get('/cadastro/usuario', (req, res) => {
+    var user = req.cookies.user;
+    if (!user) user = 0;
+    return res.render('cadastroUser', {user: user});
+});
+
+routes.get('/cadastro/restaurante', (req, res) => {
+    var user = req.cookies.user;
+    if (!user) user = 0;
+    return res.render('cadastroRest', {user: user});
+});
+
+routes.get('/cadastroMenu', (req, res) => {
+    var user = req.cookies.user;
+    if (!user) user = 0;
+    return res.render('cadastroMenu', {user: user});
+});
+
+routes.get('/login', (req, res) => {
+    var user = req.cookies.user;
+    if (!user) user = 0;
+    return res.render('login', {user: user});
 });
 
 //rotas dos usuários
 routes.get('/users', userController.index);
-routes.post('/users', userController.create);
+routes.get('/user', userController.query);
+routes.post('/user', userController.create);
+routes.post('/updateUser', userController.update);
+
 //rotas dos restaurantes
-routes.get('/restaurant', restaurantController.index);
-routes.post('/restaurant', restaurantController.create);
+routes.get('/rests', restaurantController.index);
+routes.get('/rest', restaurantController.query);
+routes.post('/rest', restaurantController.create);
+routes.post('/updateRest', restaurantController.update);
+
 //rotas dos menu
-routes.get('/menu', menuController.index);
-routes.post('/menu', menuController.create);
-routes.delete('/menu/:id', menuController.delete);
-//demais rotas
-routes.get('/profileRest', profileRestController.index);
-routes.get('/profileUser', profileUserController.index);
-routes.post('/sessionUser', sessionUserController.create);
-routes.post('/sessionRest', sessionRestController.create);
+routes.get('/meuMenu', menuController.query);
+routes.get('/cardapio', menuController.queryAll);
+routes.post('/createMenu', menuController.create);
+routes.post('/deleteMenu', menuController.delete);
+
+//login e logout
+routes.post('/login', loginController.login);
+routes.post('/logout', loginController.logout);
 
 module.exports = routes;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Perfil do restaurante</title>
+</head>
+<body>
+    <nav>
+        <% if (user == 1) {%>
+        <%- include('nav/navUser') %>
+        <% } else if (user == 2) { %>
+        <%- include('nav/navRest') %>
+        <% } else { %>
+        <%- include('nav/nav') %>
+        <% } %>
+    </nav>
+    <h1 class="title-form">Meu Restaurante</h1>
+    <form class="form-cadastro" id="form-update">
+        <label for="in-name" >Nome do restaurante</label>
+        <input class="input-form" id="in-name" type="text" value="<%= prof.name %>" placeholder="Nome do seu restaurante">
+        <label for="in-dt">Data de nascimento</label>
+        <input class="input-form" disabled id="in-dt" type="text" value="<%= prof.dt %>" placeholder="Data de nascimento">
+        <label for="in-cnpj">CNPJ</label>
+        <input class="input-form" disabled id="in-cnpj" type="text" value="<%= prof.cnpj %>" placeholder="CNPJ">
+        <label for="in-uf">UF</label>
+        <input class="input-form" id="in-uf" type="text" value="<%= prof.uf %>" placeholder="UF">
+        <label for="in-city">Cidade</label>
+        <input class="input-form" id="in-city" type="text" value="<%= prof.city %>" placeholder="Cidade">
+        <label for="in-street">Rua</label>
+        <input class="input-form" id="in-street" type="text" value="<%= prof.street %>" placeholder="Rua">
+        <label for="in-number">Numero</label>
+        <input class="input-form" id="in-number" type="text" value="<%= prof.number %>" placeholder="Numero">
+        <label for="in-email">E-mail</label>
+        <input class="input-form" disabled id="in-email" type="text" value="<%= prof.email %>" placeholder="Senha">
+        <label for="in-pass">Senha</label>
+        <input class="input-form" id="in-pass" type="password" value="" placeholder="Senha">
+        <label for="in-pass2">Confirmar senha</label>
+        <input class="input-form" id="in-pass2" type="password" value="" placeholder="Confirmar senha">
+        <button class="btn-submit" type="submit">Alterar dados</button>
+    </form>
+    <script src="js/scriptRestUpdate.js"></script>
+</body>
+</html>

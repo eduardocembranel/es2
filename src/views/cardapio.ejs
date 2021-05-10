@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Cardapio</title>
+</head>
+<body>
+    <nav>
+        <% if (user == 1) {%>
+        <%- include('nav/navUser') %>
+        <% } else if (user == 2) { %>
+        <%- include('nav/navRest') %>
+        <% } else { %>
+        <%- include('nav/nav') %>
+        <% } %>
+    </nav>
+    <h1 class="title-form">Cardápio</h1>
+    <section class="cards">
+        <% for (let i = 0; i < prof.length; ++i) { %>
+            <article id="id-menu-<%-prof[i].id%>" class="card">
+                <div class="wrapper">
+                    <p class="title-menu"><b><%- prof[i].name %></b></p>
+                    <img width="300px" height="300px" src="https://apucarana.cidadecancao.com/media/catalog/product/cache/1/image/420x565/9df78eab33525d08d6e5fb8d27136e95/p/i/picanha_bovina_recorte_kg_79495.jpg" alt="Prato">
+                    <p><%- prof[i].desc %></p>
+                    <p><b>Restaurante: </b> <%- prof[i].restName %></p>
+                    <p><b>Cidade: </b> <%- prof[i].city %> - <%- prof[i].uf %></p>
+                    <p><b>R$ </b><%- prof[i].value %></p>
+                </div>
+            </article>
+        <% } %>
+    </section>
+</body>
+</html>

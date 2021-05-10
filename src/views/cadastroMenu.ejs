@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Adicionar prato</title>
+</head>
+<body>
+    <nav>
+        <% if (user == 1) {%>
+        <%- include('nav/navUser') %>
+        <% } else if (user == 2) { %>
+        <%- include('nav/navRest') %>
+        <% } else { %>
+        <%- include('nav/nav') %>
+        <% } %>
+    </nav>
+
+    <h1 class="title-form">Adicionar prato</h1>
+    <form class="form-cadastro" id="form-create-menu">
+        <label for="in-name">Nome do prato</label>
+        <input class="input-form" id="in-name" type="text" placeholder="Nome do seu prato">
+        <label for="in-desc">Descrição do prato</label>
+        <input class="input-form" id="in-desc" type="text" placeholder="Descrição do seu prato">
+        <label for="in-value">Preço (R$) do prato</label>
+        <input class="input-form" id="in-value" type="text" placeholder="Preço do seu prato">
+        <label for="in-img">Imagem do prato</label>
+        <input class="input-form" id="in-img" type="file" placeholder="Imagem do prato">
+        <button class="btn-submit" type="submit" id="btn-create-menu">Adicionar prato</button>
+    </form>
+    <script src="js/scriptMenuCreate.js"></script>
+</body>
+</html>

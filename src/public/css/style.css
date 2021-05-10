@@ -1,0 +1,132 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+}
+
+.title-form {
+    font-size: 35px;
+    margin: 50px 10px 10px 10px;
+    text-align: center;
+}
+
+ul, #btn-logout {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #a11;
+}
+
+li {
+    float: left;
+}
+
+#btn-logout {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    border: 0px solid;
+    cursor: pointer;
+}
+
+li a, #btn-logout {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, #btn-logout:hover {
+    background-color: #811;
+}
+
+/*
+forms
+*/
+
+.input-form {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-submit {
+    font-size: 20px;
+    width: 100%;
+    background-color: rgb(179, 14, 14);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
+.btn-submit:hover {
+    background-color: rgb(139, 8, 8);
+}
+
+.form-cadastro {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    margin: 20px 250px;
+}
+
+/*
+cards
+*/
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+ }
+ 
+.card {
+    flex: 0 1 24%;
+    box-sizing: border-box;
+    margin: 1rem .25em;
+    border: #811 solid;
+    border-radius: 5px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.title-menu {
+    font-size: 23px;
+}
+
+.btn-card {
+    margin: 5px 0 20px 0;
+    padding: 2px 15px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgb(240, 32, 32);
+    color: white;
+    margin: 5px;
+    border: rgb(240, 32, 32);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-card:hover {
+    border: rgb(153, 7, 7);
+    background-color: rgb(153, 7, 7);
+}
+
+p {
+    margin: 10px;
+}

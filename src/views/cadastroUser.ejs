@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Cadastro de Usuário</title>
+</head>
+<body>
+    <nav>
+        <% if (user == 1) {%>
+        <%- include('nav/navUser') %>
+        <% } else if (user == 2) { %>
+        <%- include('nav/navRest') %>
+        <% } else { %>
+        <%- include('nav/nav') %>
+        <% } %>
+    </nav>
+    <h1 class="title-form">Criar uma nova conta</h1>
+    <form class="form-cadastro" id="form-create-user">
+        <label for="in-name">Nome</label>
+        <input class="input-form" id="in-name" type="text" placeholder="Seu nome">
+        <label for="in-dt">Data de nascimento</label>
+        <input class="input-form" id="in-dt" type="text" placeholder="dd/mm/aaaa">
+        <label for="in-cpf">CPF</label>
+        <input class="input-form" id="in-cpf" type="text" placeholder="Apenas digitos">
+        <label for="in-uf">UF</label>
+        <input class="input-form" id="in-uf" type="text" placeholder="UF">
+        <label for="in-city">Cidade</label>
+        <input class="input-form" id="in-city" type="text" placeholder="Cidade">
+        <label for="in-street">Rua</label>
+        <input class="input-form" id="in-street" type="text" placeholder="Sua rua">
+        <label for="in-number">Numero</label>
+        <input class="input-form" id="in-number" type="text" placeholder="Numero de residencia">
+        <label for="in-email">E-mail</label>
+        <input class="input-form" id="in-email" type="text" placeholder="Seu e-mail">
+        <label for="in-pass">Senha</label>
+        <input class="input-form" id="in-pass" type="password" value="" placeholder="Escolha uma senha">
+        <label for="in-pass2">Confirmar senha</label>
+        <input class="input-form" id="in-pass2" type="password" value="" placeholder="Confirme a sua senha">
+        <button class="btn-submit" type="submit" id="btn-create-user">Criar conta</button>
+    </form>
+    <script src="../js/scriptUserCreate.js"></script>
+</body>
+</html>

@@ -1,43 +1,56 @@
 const connection = require('../database/connection')
+const validade = require('./validate');
 
 module.exports = {
     async index (request, response){
-        const { page = 1} = request.query;
-
-        const [count] = await connection('menu').count();
-        console.log(count);
-
         const menu = await connection('menu')
-            .join('restaurant', 'restaurant.id', '=', 'menu.rest_id') //juntar com a tabela do rest, onde os ids são iguais
-            .limit(5).offset((page -1) * 5) //para apenas carregar 5 por vez
-            .select(['menu.*', //o que eu quero de menu
-            'restaurant.name', 'restaurant.city']);//o que eu quero de ongs
-
-        response.header('X-Total-Count', count['count(*)']);
+            .join('restaurants', 'restaurants.id', '=', 'menu.rest_id')
+            .select(['menu.*', 'restaurants.name', 'restaurant.city']);
+            
         return response.json(menu);
     },
 
-    async create (request, response){
-        const { title, description, value } = request.body;
-        const rest_id = request.headers.authorization;
+    async create (request, response) {
+        const { name, desc, value, img } = request.body;
+        const rest_id = request.cookies.id;
 
-        //armazena na primeira em 'id' o que tem na primeira posiçao do vetor
+        const msg = validade.valCreateMenu(name, desc, value, img);
+        if (msg != 'ok') 
+            return response.json({ id: -1, msg: msg });
+
         const [id] = await connection('menu').insert({ 
-            title, description, value, rest_id, });
+            name, desc, value, img, rest_id });
 
-        return response.json({ id });
+        return response.json({ id: id, msg: 'ok' });
     },
 
-    async delete (request, response){
-        const { id } = request.params;
-        const rest_id = request.headers.authorization;
+    async query (request, response) {
+        const rest_id = request.cookies.id;
 
-        const menu = await connection('menu').where('id', id).select('rest_id').first();
-        if(menu.rest_id != rest_id){
-            return response.status(401).json({ error: 'operation not permitted' });
-        }
-        await connection('menu').where('id', id).delete();
+        const menus = await connection('menu')
+            .join('restaurants', 'restaurants.id', '=', 'menu.rest_id')
+            .where('menu.rest_id', rest_id)
+            .select('menu.*');
+        
+        var user = request.cookies.user;
+        if (!user) user = 0;
+        return response.render('meuMenu', {user: user, prof: menus});
+    },
 
+    async queryAll (request, response) {
+        const menus = await connection('menu')
+            .join('restaurants', 'restaurants.id', '=', 'menu.rest_id')
+            .select(['menu.*', 'restaurants.uf', 'restaurants.city', 
+                'restaurants.name as restName']);
+        
+        var user = request.cookies.user;
+        if (!user) user = 0;
+        return response.render('cardapio', {user: user, prof: menus});
+    },
+
+    async delete (request, response) {
+        const { id } = request.body;
+        await connection('menu').where('id', id).del();
         return response.status(204).send();
     }
 }
